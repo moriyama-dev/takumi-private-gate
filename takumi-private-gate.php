@@ -3,7 +3,7 @@
  * Plugin Name:       Takumi Private Gate
  * Plugin URI:        https://github.com/moriyama-dev/takumi-private-gate
  * Description:       Lock down your private WordPress site. Force login for all visitors, block REST API and XML-RPC, and lock out repeated failed login attempts.
- * Version:           1.2.3
+ * Version:           1.2.4
  * Requires at least: 6.0
  * Requires PHP:      7.4
  * Author:            Yoshiro Moriyama (Takumi Web Services)
@@ -16,7 +16,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'PRVGATE_VERSION', '1.2.3' );
+define( 'PRVGATE_VERSION', '1.2.4' );
 define( 'PRVGATE_DB_VERSION', '1.1.0' );
 define( 'PRVGATE_PLUGIN_FILE', __FILE__ );
 define( 'PRVGATE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

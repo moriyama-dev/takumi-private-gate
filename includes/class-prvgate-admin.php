@@ -1,6 +1,6 @@
 <?php
 /**
- * Registers the plugin's single settings screen under Settings > Private Gate.
+ * Registers the plugin's single screen as a top-level admin menu.
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -13,21 +13,47 @@ class PrvGate_Admin {
 	private static $settings_page_hook = '';
 
 	public static function init() {
-		add_action( 'admin_menu', array( __CLASS__, 'add_settings_page' ) );
+		add_action( 'admin_menu', array( __CLASS__, 'register_menu' ) );
 		add_action( 'admin_init', array( __CLASS__, 'register_settings' ) );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue_assets' ) );
 		add_action( 'admin_post_prvgate_unlock_ip', array( __CLASS__, 'handle_unlock_ip' ) );
 		add_action( 'admin_notices', array( __CLASS__, 'render_unlock_notice' ) );
 	}
 
-	public static function add_settings_page() {
-		self::$settings_page_hook = add_options_page(
+	/**
+	 * The screen sits in the sidebar rather than under Settings.
+	 *
+	 * It is not a settings screen in the ordinary sense: it carries the
+	 * lockout log, and an administrator shutting an attacker out has to find
+	 * it in a hurry. Buried three levels into the Settings flyout is the
+	 * wrong place for that.
+	 *
+	 * The position is a fraction on purpose. Two plugins that both ask for
+	 * the same integer collide, and WordPress resolves it by dropping one of
+	 * the menus with no warning at all.
+	 */
+	public static function register_menu() {
+		self::$settings_page_hook = add_menu_page(
 			__( 'Private Gate', 'takumi-private-gate' ),
 			__( 'Private Gate', 'takumi-private-gate' ),
 			'manage_options',
 			self::PAGE_SLUG,
-			array( __CLASS__, 'render_settings_page' )
+			array( __CLASS__, 'render_settings_page' ),
+			'dashicons-lock',
+			80.6
 		);
+	}
+
+	/**
+	 * Where the screen now lives.
+	 *
+	 * Deliberately not menu_page_url(): admin-post.php loads the admin
+	 * function library but never wp-admin/admin.php, so admin_menu does not
+	 * fire on those requests and menu_page_url() would hand back an empty
+	 * string - which is exactly where the unlock redirect below runs.
+	 */
+	public static function settings_url() {
+		return admin_url( 'admin.php?page=' . self::PAGE_SLUG );
 	}
 
 	public static function enqueue_assets( $hook_suffix ) {
@@ -258,7 +284,7 @@ class PrvGate_Admin {
 		$redirect_url = add_query_arg(
 			'prvgate_unlocked',
 			$unlocked ? '1' : '0',
-			admin_url( 'options-general.php?page=' . self::PAGE_SLUG )
+			self::settings_url()
 		);
 
 		wp_safe_redirect( $redirect_url );

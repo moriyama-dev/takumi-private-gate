@@ -5,7 +5,7 @@ Tags: login, security, private, lockout, rest-api
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,14 +38,14 @@ Developed and maintained by Yoshiro Moriyama, founder of Takumi Web Services, a 
 * IP whitelist (single IPs or CIDR ranges) that bypasses the lockdown, the API blocking, and the lockout entirely.
 * Optional per-user TOTP two-factor authentication (compatible with Google Authenticator, Authy, 1Password, etc.) enrolled from each user's own profile screen.
 * Network-activation aware: sets up per-site defaults and its login-log table on every site of a multisite network.
-* Single settings screen under Settings > Private Gate.
+* Single screen of its own in the admin sidebar.
 * Uninstalling the plugin removes its options, its login-log table, and any 2FA secrets.
 
 == Installation ==
 
 1. Upload the `takumi-private-gate` folder to `/wp-content/plugins/`, or install it directly from the Plugins screen.
 2. Activate the plugin through the "Plugins" screen in WordPress.
-3. Go to Settings > Private Gate to adjust the failed-login threshold and lockout duration.
+3. Open Private Gate in the admin sidebar to adjust the failed-login threshold and lockout duration.
 
 == Frequently Asked Questions ==
 
@@ -59,11 +59,11 @@ Yes. Since the entire site requires authentication, no unauthenticated client (i
 
 = Why doesn't the login form say I'm locked out? =
 
-By default, Takumi Private Gate intentionally shows a generic "incorrect username or password" message instead of revealing that the IP is locked out. This keeps an attacker running a brute-force attempt from learning that their requests are being blocked outright. This can be changed in Settings > Private Gate.
+By default, Takumi Private Gate intentionally shows a generic "incorrect username or password" message instead of revealing that the IP is locked out. This keeps an attacker running a brute-force attempt from learning that their requests are being blocked outright. This can be changed on the Private Gate screen.
 
 = Will I get emailed every time someone fails to log in? =
 
-No. An email is only sent when an IP actually crosses the failed-attempt threshold and gets locked out, not on every failed attempt. This can be turned off in Settings > Private Gate.
+No. An email is only sent when an IP actually crosses the failed-attempt threshold and gets locked out, not on every failed attempt. This can be turned off on the Private Gate screen.
 
 = Does the login log grow forever? =
 
@@ -71,7 +71,7 @@ No. Only the most recent 1000 login attempts are kept; older entries are pruned 
 
 = Can I make sure I never get locked out? =
 
-Yes. Add your own IP address (or a CIDR range covering it) to the whitelist in Settings > Private Gate. Whitelisted IPs bypass the site-wide lockdown, the REST API/XML-RPC blocking, and the failed-login lockout.
+Yes. Add your own IP address (or a CIDR range covering it) to the whitelist on the Private Gate screen. Whitelisted IPs bypass the site-wide lockdown, the REST API/XML-RPC blocking, and the failed-login lockout.
 
 = How do I set up two-factor authentication? =
 
@@ -87,9 +87,13 @@ Yes. If you network-activate the plugin, each site gets its own settings and log
 
 == Screenshots ==
 
-1. Settings screen under Settings > Private Gate.
+1. The Private Gate screen in the admin sidebar.
 
 == Changelog ==
+
+= 1.2.4 =
+* Changed: the plugin's screen is now a top-level item in the admin sidebar instead of an entry under Settings. The lockout log lives on it, and shutting an attacker out should not mean hunting through the Settings flyout first.
+* Fixed: unlocking an IP redirected to the screen's old address, which no longer resolves.
 
 = 1.2.3 =
 * Fixed: the "Enable 2FA" and "Disable 2FA" buttons on the profile screen never did anything. Their form was nested inside the profile form, which browsers discard, so the request was never sent. The controls are now part of the profile form itself and are applied with the "Update Profile" button.
@@ -119,6 +123,9 @@ Yes. If you network-activate the plugin, each site gets its own settings and log
 * Initial release: site-wide lockdown, REST API blocking, XML-RPC disabling, and failed-login lockout.
 
 == Upgrade Notice ==
+
+= 1.2.4 =
+Private Gate now has its own item in the admin sidebar. The old Settings > Private Gate entry is gone; the screen and every setting on it are unchanged.
 
 = 1.2.3 =
 Fixes two-factor authentication, which could not be switched on or off from the profile screen at all in earlier versions. Also closes an Application Password gap in the lockout and stops per-IP records accumulating in the database.

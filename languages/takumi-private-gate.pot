@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Takumi Private Gate 1.2.3\n"
+"Project-Id-Version: Takumi Private Gate 1.2.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/takumi-private-gate\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-20T21:47:57+00:00\n"
+"POT-Creation-Date: 2026-09-12T00:46:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: takumi-private-gate\n"
@@ -97,8 +97,8 @@ msgid "Result"
 msgstr ""
 
 #: admin/views/settings.php:9
-#: includes/class-prvgate-admin.php:25
-#: includes/class-prvgate-admin.php:26
+#: includes/class-prvgate-admin.php:37
+#: includes/class-prvgate-admin.php:38
 msgid "Private Gate"
 msgstr ""
 
@@ -106,59 +106,59 @@ msgstr ""
 msgid "Blocks site-wide access for logged-out visitors and disables the REST API and XML-RPC. You can change the allowed number of failed logins and the lockout duration here."
 msgstr ""
 
-#: includes/class-prvgate-admin.php:75
+#: includes/class-prvgate-admin.php:101
 msgid "Lockout Settings"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:82
+#: includes/class-prvgate-admin.php:108
 msgid "Allowed failed login attempts"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:90
+#: includes/class-prvgate-admin.php:116
 msgid "Lockout duration (minutes)"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:98
+#: includes/class-prvgate-admin.php:124
 msgid "Show lockout message"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:112
+#: includes/class-prvgate-admin.php:138
 msgid "Email notification on lockout"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:126
+#: includes/class-prvgate-admin.php:152
 msgid "IP Whitelist"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:133
+#: includes/class-prvgate-admin.php:159
 msgid "Allowed IP / CIDR"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:141
+#: includes/class-prvgate-admin.php:167
 msgid "IP addresses listed here are excluded from the site-wide lockdown, REST API / XML-RPC blocking, and failed-login lockout. Enter one entry per line: a single IP (e.g. 203.0.113.10) or a CIDR range (e.g. 203.0.113.0/24)."
 msgstr ""
 
-#: includes/class-prvgate-admin.php:207
+#: includes/class-prvgate-admin.php:233
 msgid "minutes"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:215
+#: includes/class-prvgate-admin.php:241
 msgid "Show on the login form that the IP is locked out (hidden by default)"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:223
+#: includes/class-prvgate-admin.php:249
 msgid "Notify the admin address (from General Settings) when a lockout occurs"
 msgstr ""
 
-#: includes/class-prvgate-admin.php:249
+#: includes/class-prvgate-admin.php:275
 msgid "You do not have permission to perform this action."
 msgstr ""
 
-#: includes/class-prvgate-admin.php:276
+#: includes/class-prvgate-admin.php:302
 msgid "The IP address has been unlocked."
 msgstr ""
 
-#: includes/class-prvgate-admin.php:278
+#: includes/class-prvgate-admin.php:304
 msgid "Failed to unlock the IP address."
 msgstr ""
 
