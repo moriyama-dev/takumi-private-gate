@@ -1,3 +1,24 @@
+# OS
 .DS_Store
-*.log
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Node (if tooling added later)
 node_modules/
+package-lock.json
+
+# Build artifacts
+*.zip
+
+# Translations: ship languages/takumi-private-gate.pot only.
+# Bundling .po/.mo breaks the WordPress.org guidelines - translation is
+# handled by translate.wordpress.org.
+languages/*.po
+languages/*.mo
+
+# WordPress
+/wp-content/

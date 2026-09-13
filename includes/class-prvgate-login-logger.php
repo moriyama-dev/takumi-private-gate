@@ -6,13 +6,13 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class WPG_Login_Logger {
+class PrvGate_Login_Logger {
 
 	const MAX_LOG_ENTRIES = 1000;
 
 	public static function table_name() {
 		global $wpdb;
-		return $wpdb->prefix . 'wpg_login_log';
+		return $wpdb->prefix . 'prvgate_login_log';
 	}
 
 	public static function create_table() {
@@ -39,6 +39,7 @@ class WPG_Login_Logger {
 	public static function log( $ip, $username, $result ) {
 		global $wpdb;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- custom table has no caching API equivalent for inserts.
 		$wpdb->insert(
 			self::table_name(),
 			array(
@@ -57,6 +58,7 @@ class WPG_Login_Logger {
 		global $wpdb;
 
 		$table = self::table_name();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- custom table row count, not cacheable/user-facing, $table is not user input.
 		$count = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
 
 		if ( $count <= self::MAX_LOG_ENTRIES ) {
@@ -64,6 +66,7 @@ class WPG_Login_Logger {
 		}
 
 		$excess = $count - self::MAX_LOG_ENTRIES;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- custom table prune, $table is not user input.
 		$wpdb->query( $wpdb->prepare( "DELETE FROM {$table} ORDER BY id ASC LIMIT %d", $excess ) );
 	}
 
@@ -73,9 +76,13 @@ class WPG_Login_Logger {
 	public static function get_recent_entries( $limit = 100 ) {
 		global $wpdb;
 
+		$table = self::table_name();
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- custom table, admin-only read.
 		return $wpdb->get_results(
 			$wpdb->prepare(
-				"SELECT ip_address, username, result, attempted_at FROM " . self::table_name() . " ORDER BY id DESC LIMIT %d",
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- $table is not user input.
+				"SELECT ip_address, username, result, attempted_at FROM {$table} ORDER BY id DESC LIMIT %d",
 				$limit
 			)
 		);

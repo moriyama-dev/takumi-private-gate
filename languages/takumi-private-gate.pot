@@ -1,0 +1,253 @@
+# Copyright (C) 2026 Yoshiro Moriyama (Takumi Web Services)
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Takumi Private Gate 1.2.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/takumi-private-gate\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-08-20T21:47:57+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: takumi-private-gate\n"
+
+#. Plugin Name of the plugin
+#: takumi-private-gate.php
+msgid "Takumi Private Gate"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: takumi-private-gate.php
+msgid "https://github.com/moriyama-dev/takumi-private-gate"
+msgstr ""
+
+#. Description of the plugin
+#: takumi-private-gate.php
+msgid "Lock down your private WordPress site. Force login for all visitors, block REST API and XML-RPC, and lock out repeated failed login attempts."
+msgstr ""
+
+#. Author of the plugin
+#: takumi-private-gate.php
+msgid "Yoshiro Moriyama (Takumi Web Services)"
+msgstr ""
+
+#. Author URI of the plugin
+#: takumi-private-gate.php
+msgid "https://takumi.ca"
+msgstr ""
+
+#: admin/views/lockout-log.php:13
+msgid "Success"
+msgstr ""
+
+#: admin/views/lockout-log.php:14
+msgid "Failure"
+msgstr ""
+
+#: admin/views/lockout-log.php:15
+msgid "Lockout"
+msgstr ""
+
+#: admin/views/lockout-log.php:20
+msgid "Currently locked-out IPs"
+msgstr ""
+
+#: admin/views/lockout-log.php:23
+msgid "There are no currently locked-out IP addresses."
+msgstr ""
+
+#: admin/views/lockout-log.php:28
+#: admin/views/lockout-log.php:72
+msgid "IP address"
+msgstr ""
+
+#: admin/views/lockout-log.php:29
+msgid "Scheduled unlock time"
+msgstr ""
+
+#: admin/views/lockout-log.php:30
+msgid "Action"
+msgstr ""
+
+#: admin/views/lockout-log.php:53
+msgid "Unlock"
+msgstr ""
+
+#: admin/views/lockout-log.php:63
+msgid "Login attempt log (last 100)"
+msgstr ""
+
+#: admin/views/lockout-log.php:66
+msgid "There are no login attempts recorded yet."
+msgstr ""
+
+#: admin/views/lockout-log.php:71
+msgid "Date/time"
+msgstr ""
+
+#: admin/views/lockout-log.php:73
+msgid "Username"
+msgstr ""
+
+#: admin/views/lockout-log.php:74
+msgid "Result"
+msgstr ""
+
+#: admin/views/settings.php:9
+#: includes/class-prvgate-admin.php:25
+#: includes/class-prvgate-admin.php:26
+msgid "Private Gate"
+msgstr ""
+
+#: admin/views/settings.php:10
+msgid "Blocks site-wide access for logged-out visitors and disables the REST API and XML-RPC. You can change the allowed number of failed logins and the lockout duration here."
+msgstr ""
+
+#: includes/class-prvgate-admin.php:75
+msgid "Lockout Settings"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:82
+msgid "Allowed failed login attempts"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:90
+msgid "Lockout duration (minutes)"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:98
+msgid "Show lockout message"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:112
+msgid "Email notification on lockout"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:126
+msgid "IP Whitelist"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:133
+msgid "Allowed IP / CIDR"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:141
+msgid "IP addresses listed here are excluded from the site-wide lockdown, REST API / XML-RPC blocking, and failed-login lockout. Enter one entry per line: a single IP (e.g. 203.0.113.10) or a CIDR range (e.g. 203.0.113.0/24)."
+msgstr ""
+
+#: includes/class-prvgate-admin.php:207
+msgid "minutes"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:215
+msgid "Show on the login form that the IP is locked out (hidden by default)"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:223
+msgid "Notify the admin address (from General Settings) when a lockout occurs"
+msgstr ""
+
+#: includes/class-prvgate-admin.php:249
+msgid "You do not have permission to perform this action."
+msgstr ""
+
+#: includes/class-prvgate-admin.php:276
+msgid "The IP address has been unlocked."
+msgstr ""
+
+#: includes/class-prvgate-admin.php:278
+msgid "Failed to unlock the IP address."
+msgstr ""
+
+#: includes/class-prvgate-api-blocker.php:23
+msgid "Authentication required."
+msgstr ""
+
+#. translators: %d: minutes remaining until the IP is unlocked.
+#: includes/class-prvgate-lockout.php:98
+#, php-format
+msgid "Too many failed login attempts. Please try again in %d minutes."
+msgstr ""
+
+#: includes/class-prvgate-lockout.php:108
+msgid "<strong>Error</strong>: The username or password is incorrect."
+msgstr ""
+
+#. translators: %s: site name.
+#: includes/class-prvgate-lockout.php:281
+#, php-format
+msgid "[%s] An IP address has been locked out"
+msgstr ""
+
+#. translators: 1: IP address, 2: lockout expiry date/time.
+#: includes/class-prvgate-lockout.php:287
+#, php-format
+msgid "The IP address %1$s exceeded the failed login limit and has been locked out until %2$s."
+msgstr ""
+
+#: includes/class-prvgate-lockout.php:320
+msgid "(unknown)"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:48
+msgid "Authenticator code (only if you have 2FA enabled)"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:72
+msgid "<strong>Error</strong>: The authenticator code is incorrect."
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:91
+msgid "Takumi Private Gate: Two-Factor Authentication (2FA)"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:94
+msgid "Status"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:98
+msgid "Enabled"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:102
+msgid "Turn off two-factor authentication for this account"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:105
+msgid "Tick the box above, then click \"Update Profile\" at the bottom of this page. The stored key is deleted, so re-enabling later means enrolling again."
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:115
+msgid "Not enabled yet. Add the key below manually to an authenticator app (such as Google Authenticator, Authy, or 1Password), then enter the 6-digit code it shows to activate."
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:117
+msgid "Setup URI (to paste directly into a compatible app):"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:119
+msgid "Confirmation code:"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:122
+msgid "Enter the 6-digit code, then click \"Update Profile\" at the bottom of this page to activate."
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:124
+msgid "Disabled"
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:214
+msgid "Two-factor authentication has been enabled."
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:215
+msgid "The confirmation code was incorrect, so two-factor authentication could not be enabled."
+msgstr ""
+
+#: includes/class-prvgate-two-factor.php:216
+msgid "Two-factor authentication has been disabled."
+msgstr ""

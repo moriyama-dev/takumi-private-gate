@@ -8,7 +8,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class WPG_Ip_Whitelist {
+class PrvGate_Ip_Whitelist {
 
 	public static function get_client_ip() {
 		return isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
@@ -19,7 +19,7 @@ class WPG_Ip_Whitelist {
 	 * of trimmed, non-empty entries (single IPs or CIDR ranges).
 	 */
 	public static function get_entries() {
-		$raw = (string) get_option( 'wpg_ip_whitelist', '' );
+		$raw = (string) get_option( 'prvgate_ip_whitelist', '' );
 		$raw = str_replace( ',', "\n", $raw );
 
 		$entries = array();

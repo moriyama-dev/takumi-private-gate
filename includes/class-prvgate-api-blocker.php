@@ -5,7 +5,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-class WPG_Api_Blocker {
+class PrvGate_Api_Blocker {
 
 	public static function init() {
 		add_filter( 'rest_authentication_errors', array( __CLASS__, 'block_unauthenticated_rest_requests' ) );
@@ -17,10 +17,10 @@ class WPG_Api_Blocker {
 			return $result;
 		}
 
-		if ( ! is_user_logged_in() && ! WPG_Ip_Whitelist::is_whitelisted() ) {
+		if ( ! is_user_logged_in() && ! PrvGate_Ip_Whitelist::is_whitelisted() ) {
 			return new WP_Error(
-				'wpg_rest_forbidden',
-				__( '認証が必要です。', 'wp-private-gate' ),
+				'prvgate_rest_forbidden',
+				__( 'Authentication required.', 'takumi-private-gate' ),
 				array( 'status' => 401 )
 			);
 		}
