@@ -11,6 +11,8 @@ Built for diaries, internal tools, staging sites and client notes sites that sho
 
 Published on WordPress.org: <https://wordpress.org/plugins/takumi-private-gate/>
 
+![Private Gate settings screen: lockout rules, email alert and IP whitelist](docs/images/settings.png)
+
 ---
 
 ## Why this exists
